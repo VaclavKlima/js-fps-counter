@@ -1,4 +1,13 @@
 (() => {
+    if (window.trustedTypes && window.trustedTypes.createPolicy && !window.trustedTypes.defaultPolicy) {
+        window.trustedTypes.createPolicy('default', {
+            createHTML: string => string
+            // Optional, only needed for script (url) tags
+            //,createScriptURL: string => string
+            //,createScript: string => string,
+        });
+    }
+
     let element = document.createElement('div');
     let frames = new Array(60).fill(0);
     let fpsLow = 60;
